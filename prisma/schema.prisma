@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Loja {
+  id          String   @id @default(cuid())
+  nome        String
+  slug        String   @unique
+  whatsapp    String   @unique
+  pinHash     String
+  capacidade  Int      @default(3)
+  criadoEm    DateTime @default(now())
+  pedidos     Pedido[]
+}
+
+model Pedido {
+  id         String   @id @default(cuid())
+  lojaId     String
+  loja       Loja     @relation(fields: [lojaId], references: [id], onDelete: Cascade)
+  clienteNome String
+  clienteTelefone String
+  data       String
+  porte      String
+  descricao  String   @default("")
+  status     String   @default("pendente")
+  origem     String   @default("painel")
+  criadoEm   DateTime @default(now())
+
+  @@index([lojaId, data])
+}

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #faf6ee;
+  --paper-alt: #f2ead9;
+  --card: #ffffff;
+  --ink: #2a1e18;
+  --ink-soft: #6b5c4d;
+  --line: #e3d6bd;
+
+  --accent: #b23a4e;
+  --accent-ink: #ffffff;
+  --accent-soft: #f6dee1;
+
+  --livre: #3f7350;
+  --livre-bg: #e1efe2;
+  --quase: #b5791f;
+  --quase-bg: #f6ead0;
+  --lotado: #a13c3c;
+  --lotado-bg: #f4dcd8;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-alt: var(--paper-alt);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-livre: var(--livre);
+  --color-livre-bg: var(--livre-bg);
+  --color-quase: var(--quase);
+  --color-quase-bg: var(--quase-bg);
+  --color-lotado: var(--lotado);
+  --color-lotado-bg: var(--lotado-bg);
+
+  --font-sans: var(--font-nunito);
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
