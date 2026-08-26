@@ -60,18 +60,21 @@ Copie `.env.example` para `.env` e ajuste:
 
 ## Publicar de graça (Vercel + Postgres gratuito)
 
+O projecto já vem preparado para isto: `prisma/schema.production.prisma` é
+uma cópia do schema apontando para Postgres, e o script `vercel-build`
+(em `package.json`) gera o client e aplica as migrações contra essa base
+automaticamente a cada deploy — não precisa mexer em nada manualmente.
+
 1. **Base de dados**: crie um projecto gratuito no [Neon](https://neon.tech)
    ou no [Supabase](https://supabase.com) e copie a connection string
    (Postgres).
-2. **Trocar o motor da base de dados**: em `prisma/schema.prisma`, mude
-   `provider = "sqlite"` para `provider = "postgresql"` no bloco `datasource`.
-3. Rode `DATABASE_URL="<a sua connection string>" npx prisma migrate deploy`
-   para criar as tabelas na base de dados de produção.
-4. **Deploy**: crie um projecto gratuito na [Vercel](https://vercel.com),
-   ligue este repositório e configure as variáveis de ambiente `DATABASE_URL`
-   e `SESSION_SECRET` (production) nas definições do projecto.
-5. Pronto — a Vercel builda e publica a cada push. O plano gratuito cobre
-   confortavelmente o lançamento e as primeiras dezenas de confeiteiras.
+2. **Deploy**: em [vercel.com/new](https://vercel.com/new), importe este
+   repositório do GitHub.
+3. Nas variáveis de ambiente do projecto, adicione:
+   - `DATABASE_URL` → a connection string do passo 1
+   - `SESSION_SECRET` → uma string aleatória longa (`openssl rand -hex 32`)
+4. Clique em Deploy. O `vercel-build` cuida de criar as tabelas na primeira
+   vez e de aplicar novas migrações nas próximas.
 
 Nada nisto exige cartão de crédito: Neon/Supabase e Vercel têm planos
 gratuitos permanentes (com limites generosos), não apenas trials.
