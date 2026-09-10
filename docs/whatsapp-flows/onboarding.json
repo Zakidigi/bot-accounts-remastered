@@ -1,0 +1,110 @@
+{
+  "version": "6.3",
+  "screens": [
+    {
+      "id": "DADOS_BASICOS",
+      "title": "Vamos começar",
+      "data": {},
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "Configura a tua conta"
+          },
+          {
+            "type": "TextInput",
+            "name": "nome",
+            "label": "O teu nome ou nome da empresa",
+            "input-type": "text",
+            "required": true
+          },
+          {
+            "type": "RadioButtonsGroup",
+            "name": "tipo_conta",
+            "label": "Tipo de conta",
+            "required": true,
+            "data-source": [
+              { "id": "pessoal", "title": "Pessoal" },
+              { "id": "empresa", "title": "Empresa" }
+            ]
+          },
+          {
+            "type": "Dropdown",
+            "name": "moeda",
+            "label": "Moeda base",
+            "required": true,
+            "data-source": [
+              { "id": "AOA", "title": "Kwanza (AOA)" },
+              { "id": "USD", "title": "Dólar (USD)" },
+              { "id": "EUR", "title": "Euro (EUR)" }
+            ]
+          },
+          {
+            "type": "Footer",
+            "label": "Continuar",
+            "on-click-action": {
+              "name": "navigate",
+              "next": { "type": "screen", "name": "CENTROS_DE_CUSTO" },
+              "payload": {
+                "nome": "${form.nome}",
+                "tipo_conta": "${form.tipo_conta}",
+                "moeda": "${form.moeda}"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "CENTROS_DE_CUSTO",
+      "title": "Centros de custo",
+      "data": {
+        "nome": { "type": "string" },
+        "tipo_conta": { "type": "string" },
+        "moeda": { "type": "string" }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextBody",
+            "text": "Por defeito usamos \"Pessoal\" e \"Empresa\" como centros de custo. Queres manter assim?"
+          },
+          {
+            "type": "RadioButtonsGroup",
+            "name": "centros_custo_opcao",
+            "label": "Centros de custo",
+            "required": true,
+            "data-source": [
+              { "id": "manter", "title": "Manter Pessoal / Empresa" },
+              { "id": "definir", "title": "Definir os meus" }
+            ]
+          },
+          {
+            "type": "TextInput",
+            "name": "centros_custo_custom",
+            "label": "Se escolheste \"Definir os meus\": separa por vírgulas",
+            "input-type": "text",
+            "required": false
+          },
+          {
+            "type": "Footer",
+            "label": "Concluir",
+            "on-click-action": {
+              "name": "complete",
+              "payload": {
+                "nome": "${data.nome}",
+                "tipo_conta": "${data.tipo_conta}",
+                "moeda": "${data.moeda}",
+                "centros_custo_opcao": "${form.centros_custo_opcao}",
+                "centros_custo_custom": "${form.centros_custo_custom}"
+              }
+            }
+          }
+        ]
+      },
+      "terminal": true
+    }
+  ]
+}
