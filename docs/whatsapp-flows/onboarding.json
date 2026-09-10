@@ -84,7 +84,7 @@
           {
             "type": "TextInput",
             "name": "centros_custo_custom",
-            "label": "Se escolheste \"Definir os meus\": separa por vírgulas",
+            "label": "Separa por vírgulas",
             "input-type": "text",
             "required": false
           },
