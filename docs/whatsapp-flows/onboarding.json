@@ -60,9 +60,9 @@
       "id": "CENTROS_DE_CUSTO",
       "title": "Centros de custo",
       "data": {
-        "nome": { "type": "string" },
-        "tipo_conta": { "type": "string" },
-        "moeda": { "type": "string" }
+        "nome": { "type": "string", "__example__": "Ana" },
+        "tipo_conta": { "type": "string", "__example__": "pessoal" },
+        "moeda": { "type": "string", "__example__": "AOA" }
       },
       "layout": {
         "type": "SingleColumnLayout",
