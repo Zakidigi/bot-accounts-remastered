@@ -58,7 +58,7 @@
     },
     {
       "id": "CENTROS_DE_CUSTO",
-      "title": "Centros de custo",
+      "title": "Organizar gastos",
       "data": {
         "nome": { "type": "string", "__example__": "Ana" },
         "tipo_conta": { "type": "string", "__example__": "pessoal" },
@@ -69,22 +69,22 @@
         "children": [
           {
             "type": "TextBody",
-            "text": "Por defeito usamos \"Pessoal\" e \"Empresa\" como centros de custo. Queres manter assim?"
+            "text": "Queres separar os teus gastos em grupos (ex: Casa e Loja) ou juntar tudo numa lista só?"
           },
           {
             "type": "RadioButtonsGroup",
             "name": "centros_custo_opcao",
-            "label": "Centros de custo",
+            "label": "Separar os gastos?",
             "required": true,
             "data-source": [
-              { "id": "manter", "title": "Manter Pessoal / Empresa" },
-              { "id": "definir", "title": "Definir os meus" }
+              { "id": "manter", "title": "Não, tudo junto" },
+              { "id": "definir", "title": "Sim, em grupos" }
             ]
           },
           {
             "type": "TextInput",
             "name": "centros_custo_custom",
-            "label": "Separa por vírgulas",
+            "label": "Nomes dos grupos",
             "input-type": "text",
             "required": false
           },
